@@ -358,8 +358,15 @@
 
   .site-title-center {
     width: min(94vw, 520px);
-    font-size: clamp(3rem, 16vw, 5rem);
-    line-height: 0.88;
+    font-size: clamp(1.35rem, 5.8vw, 2.35rem);
+    line-height: 0.95;
+    text-wrap: balance;
+  }
+
+  .entrance-title {
+    font-size: clamp(1.35rem, 5.8vw, 2.5rem);
+    line-height: 0.95;
+    text-wrap: balance;
   }
 
   .intro-subtitle {
@@ -386,7 +393,13 @@
   }
 
   .site-title-corner {
-    max-width: 76vw;
+    max-width: min(88vw, 340px);
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
+  .is-entered .site-title-corner {
+    font-size: clamp(0.78rem, 3.2vw, 1.1rem);
   }
 }
 
@@ -4165,8 +4178,9 @@
 }
 
 .entrance-title {
-  font-size: clamp(2.4rem, min(7.2vw, 12vh), 6.1rem);
-  line-height: 0.84;
+  font-size: clamp(1.75rem, min(5.5vw, 9vh), 4.2rem);
+  line-height: 0.92;
+  text-wrap: balance;
 }
 
 .entrance-purpose {
@@ -4297,7 +4311,9 @@
   }
 
   .entrance-title {
-    font-size: clamp(2.5rem, min(14vw, 10vh), 4.6rem);
+    font-size: clamp(1.35rem, 5.8vw, 2.5rem);
+    line-height: 0.95;
+    text-wrap: balance;
   }
 
   .entrance-purpose {
@@ -4778,13 +4794,22 @@ width: min(760px, calc(100dvh - 28px)) !important;
 max-height: calc(100dvw - 28px) !important;
 
 overflow-y: auto !important;
-padding: 16px !important;
+padding: 12px 14px !important;
 border-radius: 24px !important;
 }
 
+.home-page.is-mobile-like .entrance-eyebrow {
+font-size: 0.68rem !important;
+margin-bottom: 6px !important;
+}
+
 .home-page.is-mobile-like .entrance-title {
-font-size: clamp(1.9rem, 7dvh, 3.4rem) !important;
-line-height: 0.9 !important;
+width: 100% !important;
+max-width: 100% !important;
+font-size: clamp(0.95rem, 3.6dvw, 1.45rem) !important;
+line-height: 1.02 !important;
+letter-spacing: 0.02em !important;
+text-wrap: balance !important;
 }
 
 .home-page.is-mobile-like .entrance-purpose {
@@ -4794,7 +4819,7 @@ margin-top: 8px !important;
 }
 
 .home-page.is-mobile-like .entrance-mini-grid {
-grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+grid-template-columns: 1fr !important;
 gap: 8px !important;
 margin-top: 10px !important;
 }
@@ -4881,14 +4906,29 @@ font-size: 0.88rem !important;
 }
 
 .home-page.is-mobile-like.is-home-intro-ready:not(.is-entered) .site-title-center {
-width: min(86%, 720px) !important;
-font-size: clamp(2.2rem, 9dvh, 4.2rem) !important;
-line-height: 0.88 !important;
+width: 100% !important;
+max-width: 100% !important;
+margin: 0 0 6px !important;
+font-size: clamp(0.95rem, 3.6dvw, 1.45rem) !important;
+line-height: 1.02 !important;
+letter-spacing: 0.02em !important;
+text-wrap: balance !important;
+}
+
+.home-page.is-mobile-like.is-home-intro-ready:not(.is-entered) .start-here-title {
+font-size: clamp(0.92rem, 3.1dvw, 1.15rem) !important;
 }
 
 .home-page.is-mobile-like.is-home-intro-ready:not(.is-entered) .click-hint {
-margin-top: 18px !important;
-font-size: clamp(0.82rem, 2.3dvh, 1rem) !important;
+margin-top: 10px !important;
+font-size: clamp(0.72rem, 2.5dvw, 0.88rem) !important;
+line-height: 1.2 !important;
+}
+
+.home-page.is-mobile-like.is-home-intro-ready:not(.is-entered) .home-guide,
+.home-page.is-mobile-like.is-home-intro-ready:not(.is-entered) .start-here {
+width: 100% !important;
+max-width: 100% !important;
 }
 
 /* Entered state */
@@ -4906,13 +4946,15 @@ pointer-events: none !important;
 
 .home-page.is-mobile-like.is-entered .site-title-corner {
 position: absolute !important;
-top: 12px !important;
-left: 14px !important;
+top: 10px !important;
+left: 12px !important;
 z-index: 40 !important;
 
-max-width: 260px !important;
-font-size: clamp(1rem, 3.6dvh, 1.35rem) !important;
-line-height: 0.92 !important;
+max-width: min(42dvh, 300px) !important;
+font-size: clamp(0.68rem, 2.5dvw, 0.92rem) !important;
+line-height: 1.05 !important;
+letter-spacing: 0.015em !important;
+text-wrap: balance !important;
 
 opacity: 0.96 !important;
 transform: none !important;
@@ -5212,9 +5254,15 @@ padding: 14px !important;
 border-radius: 22px !important;
 }
 
+.home-page.is-mobile-like .faq-header h2 {
+font-size: clamp(1.1rem, 4dvw, 1.65rem) !important;
+line-height: 1.05 !important;
+text-wrap: balance !important;
+}
+
 .home-page.is-mobile-like .faq-grid,
 .home-page.is-mobile-like .faq-sections {
-grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+grid-template-columns: 1fr !important;
 }
 
 /* Selected point view */
