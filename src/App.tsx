@@ -316,7 +316,7 @@ function App() {
             <p className="entrance-eyebrow">Public biographies → visible patterns</p>
             <h1 className="entrance-title">
               {deviceMode.isMobileLayout
-                ? "Gendered Language"
+                ? ""
                 : "Gendered Language in Biographies"}
             </h1>
 
