@@ -2444,13 +2444,11 @@ export default function LatentIntro({
     uiShellNode &&
     createPortal(
       <>
-        {deviceNotice && (
+        {isEntered && deviceNotice && (
           <div className="device-warning" role="status" aria-live="polite">
-            <strong>Lighter view active.</strong>{" "}
-            {deviceNotice.reason} Showing{" "}
-            {deviceNotice.displayedPoints.toLocaleString()} of{" "}
-            {deviceNotice.totalPoints.toLocaleString()} biographies. Use a stronger device
-            to see the full map.
+            Please use a stronger device to see the full database. Only{" "}
+            {deviceNotice.displayedPoints.toLocaleString()}/
+            {deviceNotice.totalPoints.toLocaleString()} points are being shown.
           </div>
         )}
 

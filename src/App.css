@@ -4097,44 +4097,35 @@
 .device-warning {
   position: fixed;
   left: 50%;
-  top: 16px;
+  bottom: 16px;
+  top: auto;
   transform: translateX(-50%);
   z-index: 30;
 
   width: min(720px, calc(100vw - 28px));
   padding: 11px 16px;
 
-  border: 1px solid rgba(7, 31, 69, 0.14);
-  border-radius: 999px;
-  background: rgba(255, 248, 230, 0.94);
-  color: #4a3420;
+  border: 1px solid #e6c200;
+  border-radius: 12px;
+  background: #fff59d;
+  color: #3d3200;
 
   font-family: "Times New Roman", Times, serif;
   font-size: clamp(0.86rem, 1vw, 1rem);
   line-height: 1.28;
   text-align: center;
 
-  box-shadow: 0 14px 38px rgba(7, 31, 69, 0.13);
-  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 28px rgba(61, 50, 0, 0.18);
   pointer-events: none;
-}
-
-.device-warning strong {
-  color: #071f45;
 }
 
 @media (max-width: 760px) {
   .device-warning {
-    top: 10px;
-    border-radius: 20px;
+    bottom: 10px;
+    border-radius: 12px;
     padding: 10px 12px;
     font-size: 0.88rem;
   }
-}
-
-/* Keep top warning from visually fighting with selected point overlay. */
-.home-page.has-selected-point .device-warning {
-  opacity: 0;
 }
 
 /* ---------- entrance screen: fit same text on any screen ---------- */
@@ -5202,24 +5193,26 @@ line-height: 1.12 !important;
 
 /* Bottom warning — center/right, not covering Explore */
 .home-page.is-mobile-like.is-entered .device-warning {
-position: absolute !important;
-left: 360px !important;
-right: 12px !important;
-bottom: 12px !important;
-top: auto !important;
+  position: absolute !important;
+  left: 360px !important;
+  right: 12px !important;
+  bottom: 12px !important;
+  top: auto !important;
 
-width: auto !important;
-max-width: none !important;
+  width: auto !important;
+  max-width: none !important;
 
-padding: 8px 10px !important;
-border-radius: 16px !important;
+  padding: 8px 10px !important;
+  border-radius: 12px !important;
+  background: #fff59d !important;
+  border-color: #e6c200 !important;
 
-font-size: 0.74rem !important;
-line-height: 1.15 !important;
-text-align: left !important;
+  font-size: 0.74rem !important;
+  line-height: 1.15 !important;
+  text-align: left !important;
 
-transform: none !important;
-z-index: 37 !important;
+  transform: none !important;
+  z-index: 37 !important;
 }
 
 .home-page.is-mobile-like.is-entered .gender-legend {
