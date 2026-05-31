@@ -2440,72 +2440,95 @@ export default function LatentIntro({
     return () => { isCancelled = true; };
   }, [deviceMode, onFilterOptionsChange, onLatentReadyChange, onLoadProgressChange]);
 
-  const chromePortals =
-    uiShellNode &&
-    createPortal(
-      <>
-        {deviceNotice && (
-          <div className="device-warning" role="status" aria-live="polite">
-            <strong>Lighter view active.</strong>{" "}
-            {deviceNotice.reason} Showing{" "}
-            {deviceNotice.displayedPoints.toLocaleString()} of{" "}
-            {deviceNotice.totalPoints.toLocaleString()} biographies. Use a stronger device
-            to see the full map.
+  const effectiveDeviceNotice: DeviceNotice | null =
+  deviceNotice ??
+  (deviceMode.isMobileLayout
+    ? {
+        reason: "Mobile view is using a lighter layout for smoother performance.",
+        displayedPoints: deviceMode.isLimitedDevice
+          ? points.length
+          : FULL_DATASET_POINT_COUNT,
+        totalPoints: FULL_DATASET_POINT_COUNT,
+      }
+    : null);
+
+const deviceWarningPortal =
+  typeof document !== "undefined" &&
+  isEntered &&
+  !selectedPoint &&
+  effectiveDeviceNotice
+    ? createPortal(
+        <div className="device-warning" role="status" aria-live="polite">
+          <strong>Lighter view active.</strong>{" "}
+          {effectiveDeviceNotice.reason} Showing{" "}
+          {effectiveDeviceNotice.displayedPoints.toLocaleString()} of{" "}
+          {effectiveDeviceNotice.totalPoints.toLocaleString()} biographies.
+        </div>,
+        document.body
+      )
+    : null;
+
+const chromePortals =
+  uiShellNode &&
+  createPortal(
+    <>
+      {isEntered && !selectedPoint && (
+        <aside
+          className="recompute-controls"
+          aria-label="Recompute local view controls"
+          onPointerDown={(event) => event.stopPropagation()}
+          onClick={(event) => event.stopPropagation()}
+        >
+          <div className="recompute-header">
+            <div>
+              <span className="recompute-title">Explored local view</span>
+              <p>
+                Recompute nearby gender mix inside the points currently shown by
+                your filters.
+              </p>
+            </div>
           </div>
-        )}
 
-        {isEntered && !selectedPoint && (
-          <aside
-            className="recompute-controls"
-            aria-label="Recompute local view controls"
-            onPointerDown={(event) => event.stopPropagation()}
-            onClick={(event) => event.stopPropagation()}
-          >
-            <div className="recompute-header">
-              <div>
-                <span className="recompute-title">Explored local view</span>
-                <p>Recompute nearby gender mix inside the points currently shown by your filters.</p>
-              </div>
-            </div>
+          <label className="recompute-k-label">
+            neighboring bios
+            <input
+              type="number"
+              min={1}
+              max={50}
+              value={exploreNeighborK}
+              onChange={(event) =>
+                updateExploreNeighborK(Number(event.target.value))
+              }
+            />
+          </label>
 
-            <label className="recompute-k-label">
-              neighboring bios
-              <input
-                type="number"
-                min={1}
-                max={50}
-                value={exploreNeighborK}
-                onChange={(event) => updateExploreNeighborK(Number(event.target.value))}
-              />
-            </label>
+          <div className="recompute-actions">
+            <button
+              type="button"
+              onClick={saveCurrentExploreSet}
+              disabled={visiblePoints.length < 2}
+            >
+              Recompute from current view
+            </button>
+            <button
+              type="button"
+              onClick={clearExploredLocalView}
+              disabled={!exploredPoints}
+            >
+              Clear
+            </button>
+          </div>
 
-            <div className="recompute-actions">
-              <button
-                type="button"
-                onClick={saveCurrentExploreSet}
-                disabled={visiblePoints.length < 2}
-              >
-                Recompute from current view
-              </button>
-              <button
-                type="button"
-                onClick={clearExploredLocalView}
-                disabled={!exploredPoints}
-              >
-                Clear
-              </button>
-            </div>
-
-            <p className="recompute-status">
-              {exploredPoints
-                ? `Recolored ${exploredPoints.length.toLocaleString()} biographies · neighboring bios: ${exploreNeighborK}`
-                : `Current view: ${visiblePoints.length.toLocaleString()} biographies`}
-            </p>
-          </aside>
-        )}
-      </>,
-      uiShellNode
-    );
+          <p className="recompute-status">
+            {exploredPoints
+              ? `Recolored ${exploredPoints.length.toLocaleString()} biographies · neighboring bios: ${exploreNeighborK}`
+              : `Current view: ${visiblePoints.length.toLocaleString()} biographies`}
+          </p>
+        </aside>
+      )}
+    </>,
+    uiShellNode
+  );
 
   const selectedPointOverlay = selectedPoint ? (
     <SelectedPointOverlay
@@ -2575,6 +2598,7 @@ export default function LatentIntro({
     </div>
 
     {chromePortals}
+    {deviceWarningPortal}
     </>
   );
 }

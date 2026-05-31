@@ -5988,3 +5988,48 @@ body.mobile-point-selected .home-page.is-mobile-like .latent-stage {
     max-height: 46vh !important;
   }
 }
+
+/* Device warning should be attached to the real viewport, not the rotated mobile UI shell */
+body > .device-warning {
+  position: fixed !important;
+
+  left: max(12px, env(safe-area-inset-left)) !important;
+  right: max(12px, env(safe-area-inset-right)) !important;
+  bottom: max(12px, env(safe-area-inset-bottom)) !important;
+  top: auto !important;
+
+  width: auto !important;
+  max-width: none !important;
+
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  padding: 9px 12px !important;
+  border-radius: 16px !important;
+
+  background: rgba(255, 243, 191, 0.98) !important;
+  border: 1px solid rgba(120, 84, 0, 0.22) !important;
+  color: #3d2c00 !important;
+
+  font-family: "Times New Roman", Times, serif !important;
+  font-size: 0.78rem !important;
+  line-height: 1.18 !important;
+  text-align: center !important;
+
+  box-shadow: 0 14px 36px rgba(7, 31, 69, 0.16) !important;
+  backdrop-filter: blur(12px) !important;
+
+  transform: none !important;
+  z-index: 2147483647 !important;
+  pointer-events: none !important;
+}
+
+body > .device-warning strong {
+  font-weight: 800 !important;
+}
+
+/* Hide it when selected-point mode opens */
+body.mobile-point-selected > .device-warning {
+  display: none !important;
+}
