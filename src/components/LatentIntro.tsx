@@ -2353,15 +2353,15 @@ export default function LatentIntro({
           ? limitPointsForDevice(basePoints, deviceMode.maxPoints)
           : basePoints;
 
-        if (deviceMode.isLimitedDevice) {
-          setDeviceNotice({
-            reason: deviceMode.reason,
-            displayedPoints: deviceLimitedBasePoints.length,
-            totalPoints: FULL_DATASET_POINT_COUNT,
-          });
-        } else {
-          setDeviceNotice(null);
-        }
+          if (deviceMode.isLimitedDevice || deviceMode.isMobileLayout) {
+            setDeviceNotice({
+              reason: deviceMode.reason || "Mobile view is using a lighter layout for smoother performance.",
+              displayedPoints: deviceLimitedBasePoints.length,
+              totalPoints: FULL_DATASET_POINT_COUNT,
+            });
+          } else {
+            setDeviceNotice(null);
+          }
 
         // Keep the full-space scale if the full file loaded.
         // This prevents the limited sample from stretching into a fake map shape.

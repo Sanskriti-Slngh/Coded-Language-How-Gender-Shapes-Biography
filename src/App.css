@@ -4941,12 +4941,18 @@ opacity: 0 !important;
 pointer-events: none !important;
 }
 
-/* Corner title lives in the upright overlay; hide on mobile map view so it does not cover Explore. */
 .home-page.is-mobile-like.is-entered .site-title-corner {
-display: none !important;
-visibility: hidden !important;
-opacity: 0 !important;
-pointer-events: none !important;
+position: absolute !important;
+top: 12px !important;
+left: 14px !important;
+z-index: 40 !important;
+
+max-width: 260px !important;
+font-size: clamp(1rem, 3.6dvh, 1.35rem) !important;
+line-height: 0.92 !important;
+
+opacity: 0.96 !important;
+transform: none !important;
 }
 
 /* Raw / Local controls — top right */
@@ -4993,7 +4999,7 @@ display: none !important;
 /* Explore panel — left side, readable and scrollable */
 .home-page.is-mobile-like.is-entered .explore-sidebar {
 position: absolute !important;
-top: 12px !important;
+top: 56px !important;
 left: 12px !important;
 right: auto !important;
 bottom: 12px !important;
@@ -5892,4 +5898,93 @@ body.mobile-point-selected .home-page.is-mobile-like .latent-stage {
 .selected-exhibit-overlay.is-mobile-sideways-exhibit .phrase-chip {
   font-size: 0.56rem !important;
   padding: 4px 6px !important;
+}
+
+.home-page.is-mobile-like.is-entered .device-warning {
+  position: absolute !important;
+  left: 12px !important;
+  right: 12px !important;
+  bottom: 12px !important;
+  top: auto !important;
+
+  width: auto !important;
+  max-width: none !important;
+
+  padding: 8px 10px !important;
+  border-radius: 16px !important;
+
+  background: rgba(255, 248, 230, 0.96) !important;
+  color: #4a3420 !important;
+
+  font-size: 0.74rem !important;
+  line-height: 1.15 !important;
+  text-align: center !important;
+
+  transform: none !important;
+  z-index: 80 !important;
+  opacity: 1 !important;
+  display: block !important;
+}
+
+/* FINAL MOBILE LAYOUT FIX: title should not cover Explore */
+@media (max-width: 760px) {
+  .home-page.is-mobile-like.is-entered .site-title-corner {
+    position: absolute !important;
+    top: 10px !important;
+    left: 14px !important;
+
+    max-width: 185px !important;
+    font-size: clamp(0.82rem, 3.1vw, 1.05rem) !important;
+    line-height: 0.94 !important;
+    letter-spacing: 0.04em !important;
+
+    z-index: 35 !important;
+    opacity: 0.9 !important;
+    pointer-events: none !important;
+  }
+
+  .home-page.is-mobile-like.is-entered .explore-sidebar {
+    position: absolute !important;
+    top: 72px !important;
+    left: 12px !important;
+    right: auto !important;
+    bottom: 68px !important;
+
+    width: min(330px, calc(100vw - 24px)) !important;
+    max-width: calc(100vw - 24px) !important;
+
+    z-index: 45 !important;
+  }
+
+  .home-page.is-mobile-like.is-entered .view-controls {
+    top: 10px !important;
+    right: 12px !important;
+
+    width: min(180px, 44vw) !important;
+    max-width: 44vw !important;
+
+    z-index: 46 !important;
+  }
+
+  .home-page.is-mobile-like.is-entered .view-controls button {
+    font-size: 0.68rem !important;
+    padding: 5px 6px !important;
+    min-height: 28px !important;
+  }
+}
+
+@media (max-width: 760px) and (orientation: portrait) {
+  .home-page.is-mobile-like.is-entered .site-title-corner {
+    max-width: 160px !important;
+    font-size: 0.86rem !important;
+  }
+
+  .home-page.is-mobile-like.is-entered .explore-sidebar {
+    top: 64px !important;
+    bottom: 74px !important;
+  }
+
+  .home-page.is-mobile-like.is-entered .explore-filters {
+    max-height: 46vh !important;
+  }
 }
