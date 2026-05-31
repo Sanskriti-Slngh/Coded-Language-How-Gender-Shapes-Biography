@@ -6033,3 +6033,46 @@ body > .device-warning strong {
 body.mobile-point-selected > .device-warning {
   display: none !important;
 }
+
+/* Guaranteed mobile warning banner */
+.mobile-device-banner {
+  position: fixed !important;
+
+  top: max(12px, env(safe-area-inset-top)) !important;
+  left: max(12px, env(safe-area-inset-left)) !important;
+  right: max(12px, env(safe-area-inset-right)) !important;
+
+  z-index: 2147483647 !important;
+
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+
+  padding: 9px 12px !important;
+  border-radius: 16px !important;
+
+  background: rgba(255, 241, 168, 0.98) !important;
+  border: 1px solid rgba(120, 84, 0, 0.25) !important;
+  color: #3b2b00 !important;
+
+  font-family: "Times New Roman", Times, serif !important;
+  font-size: 0.78rem !important;
+  line-height: 1.18 !important;
+  text-align: center !important;
+
+  box-shadow: 0 14px 36px rgba(7, 31, 69, 0.18) !important;
+  backdrop-filter: blur(12px) !important;
+
+  transform: none !important;
+  pointer-events: none !important;
+}
+
+.mobile-device-banner strong {
+  font-weight: 800 !important;
+}
+
+@media (min-width: 761px) {
+  .mobile-device-banner {
+    display: none !important;
+  }
+}

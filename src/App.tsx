@@ -301,6 +301,13 @@ function App() {
         uiShellRef={uiShellRef}
       />
 
+      {deviceMode.isMobileLayout && isHomeIntroReady && isEntered && !isPointSelected && (
+        <div className="mobile-device-banner" role="status" aria-live="polite">
+          <strong>Lighter mobile view active.</strong>{" "}
+          This view is simplified so the map stays smooth on phones.
+        </div>
+      )}
+
       {!isHomeIntroReady && (
         <section
           className={`entrance-overlay ${hasEntrancePlayed ? "is-waiting-for-map" : ""} ${canPressExplore ? "is-ready-to-explore" : ""} ${hasPressedExplore ? "has-pressed-explore" : ""}`}
