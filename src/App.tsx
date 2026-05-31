@@ -431,7 +431,7 @@ function App() {
 
         <h1 className="site-title-corner" aria-hidden="true">
           {deviceMode.isMobileLayout
-            ? "Gendered Language"
+            ? ""
             : "Gendered Language in Biographies"}
         </h1>
       </section>
