@@ -4941,18 +4941,12 @@ opacity: 0 !important;
 pointer-events: none !important;
 }
 
+/* Corner title lives in the upright overlay; hide on mobile map view so it does not cover Explore. */
 .home-page.is-mobile-like.is-entered .site-title-corner {
-position: absolute !important;
-top: 12px !important;
-left: 14px !important;
-z-index: 40 !important;
-
-max-width: 260px !important;
-font-size: clamp(1rem, 3.6dvh, 1.35rem) !important;
-line-height: 0.92 !important;
-
-opacity: 0.96 !important;
-transform: none !important;
+display: none !important;
+visibility: hidden !important;
+opacity: 0 !important;
+pointer-events: none !important;
 }
 
 /* Raw / Local controls — top right */
@@ -4999,7 +4993,7 @@ display: none !important;
 /* Explore panel — left side, readable and scrollable */
 .home-page.is-mobile-like.is-entered .explore-sidebar {
 position: absolute !important;
-top: 56px !important;
+top: 12px !important;
 left: 12px !important;
 right: auto !important;
 bottom: 12px !important;
