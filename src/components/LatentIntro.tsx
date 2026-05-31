@@ -2206,7 +2206,15 @@ export default function LatentIntro({
   const layoutScaleRef = useRef<LayoutScale | null>(null);
   
   const [deviceMode] = useState<DeviceMode>(() => getDeviceMode());
-  const [deviceNotice, setDeviceNotice] = useState<DeviceNotice | null>(null);
+  const [deviceNotice, setDeviceNotice] = useState<DeviceNotice | null>(() => {
+    const mode = getDeviceMode();
+    if (!mode.isLimitedDevice) return null;
+    return {
+      reason: mode.reason,
+      displayedPoints: mode.maxPoints,
+      totalPoints: FULL_DATASET_POINT_COUNT,
+    };
+  });
   const [uiShellNode, setUiShellNode] = useState<HTMLElement | null>(null);
 
   useLayoutEffect(() => {
@@ -2444,14 +2452,6 @@ export default function LatentIntro({
     uiShellNode &&
     createPortal(
       <>
-        {isEntered && deviceNotice && (
-          <div className="device-warning" role="status" aria-live="polite">
-            Please use a stronger device to see the full database. Only{" "}
-            {deviceNotice.displayedPoints.toLocaleString()}/
-            {deviceNotice.totalPoints.toLocaleString()} points are being shown.
-          </div>
-        )}
-
         {isEntered && !selectedPoint && (
           <aside
             className="recompute-controls"
@@ -2503,6 +2503,18 @@ export default function LatentIntro({
         )}
       </>,
       uiShellNode
+    );
+
+  const deviceWarningPortal =
+    deviceNotice &&
+    typeof document !== "undefined" &&
+    createPortal(
+      <div className="device-warning" role="status" aria-live="polite">
+        Please use a stronger device to see the full database. Only{" "}
+        {deviceNotice.displayedPoints.toLocaleString()}/
+        {deviceNotice.totalPoints.toLocaleString()} points are being shown.
+      </div>,
+      document.body
     );
 
   const selectedPointOverlay = selectedPoint ? (
@@ -2572,6 +2584,7 @@ export default function LatentIntro({
         createPortal(selectedPointOverlay, document.body)}
     </div>
 
+    {deviceWarningPortal}
     {chromePortals}
     </>
   );
