@@ -358,15 +358,8 @@
 
   .site-title-center {
     width: min(94vw, 520px);
-    font-size: clamp(1.35rem, 5.8vw, 2.35rem);
-    line-height: 0.95;
-    text-wrap: balance;
-  }
-
-  .entrance-title {
-    font-size: clamp(1.35rem, 5.8vw, 2.5rem);
-    line-height: 0.95;
-    text-wrap: balance;
+    font-size: clamp(3rem, 16vw, 5rem);
+    line-height: 0.88;
   }
 
   .intro-subtitle {
@@ -393,13 +386,7 @@
   }
 
   .site-title-corner {
-    max-width: min(88vw, 340px);
-    line-height: 1.02;
-    text-wrap: balance;
-  }
-
-  .is-entered .site-title-corner {
-    font-size: clamp(0.78rem, 3.2vw, 1.1rem);
+    max-width: 76vw;
   }
 }
 
@@ -4178,9 +4165,8 @@
 }
 
 .entrance-title {
-  font-size: clamp(1.75rem, min(5.5vw, 9vh), 4.2rem);
-  line-height: 0.92;
-  text-wrap: balance;
+  font-size: clamp(2.4rem, min(7.2vw, 12vh), 6.1rem);
+  line-height: 0.84;
 }
 
 .entrance-purpose {
@@ -4311,9 +4297,7 @@
   }
 
   .entrance-title {
-    font-size: clamp(1.35rem, 5.8vw, 2.5rem);
-    line-height: 0.95;
-    text-wrap: balance;
+    font-size: clamp(2.5rem, min(14vw, 10vh), 4.6rem);
   }
 
   .entrance-purpose {
@@ -4727,9 +4711,7 @@ Rotated landscape coordinate system:
   stage height = 100dvw
 */
 
-.home-page.is-mobile-like .latent-stage,
-.home-page.is-mobile-like .home-ui-shell,
-.home-page.is-mobile-like .entrance-overlay {
+.home-page.is-mobile-like .home-ui-shell {
 position: fixed !important;
 inset: auto !important;
 
@@ -4741,6 +4723,58 @@ height: 100dvw !important;
 
 transform: translate(-50%, -50%) rotate(90deg) !important;
 transform-origin: center center !important;
+}
+
+/* Home intro + FAQ stay upright and inside the phone viewport. */
+.home-page.is-mobile-like .intro-content {
+position: fixed !important;
+inset: 0 !important;
+width: 100dvw !important;
+height: 100dvh !important;
+max-width: 100dvw !important;
+max-height: 100dvh !important;
+transform: none !important;
+z-index: 14 !important;
+pointer-events: none !important;
+overflow-x: hidden !important;
+overflow-y: auto !important;
+-webkit-overflow-scrolling: touch;
+box-sizing: border-box !important;
+padding: max(12px, env(safe-area-inset-top)) 14px max(20px, env(safe-area-inset-bottom)) !important;
+justify-content: flex-start !important;
+align-items: center !important;
+}
+
+.home-page.is-mobile-like .entrance-overlay {
+position: fixed !important;
+inset: 0 !important;
+width: 100dvw !important;
+height: 100dvh !important;
+max-width: 100dvw !important;
+max-height: 100dvh !important;
+transform: none !important;
+z-index: 60 !important;
+display: flex !important;
+align-items: center !important;
+justify-content: center !important;
+padding: max(12px, env(safe-area-inset-top)) 14px max(16px, env(safe-area-inset-bottom)) !important;
+overflow: hidden !important;
+}
+
+.home-page.is-mobile-like .faq-overlay {
+position: fixed !important;
+inset: 0 !important;
+width: 100dvw !important;
+height: 100dvh !important;
+max-width: 100dvw !important;
+max-height: 100dvh !important;
+transform: none !important;
+z-index: 80 !important;
+display: flex !important;
+align-items: flex-start !important;
+justify-content: center !important;
+padding: max(10px, env(safe-area-inset-top)) 10px max(12px, env(safe-area-inset-bottom)) !important;
+overflow: auto !important;
 }
 
 /* Full map background. This fixes the blank right side. */
@@ -4767,10 +4801,6 @@ pointer-events: none !important;
 pointer-events: auto !important;
 }
 
-.home-page.is-mobile-like .intro-content {
-pointer-events: none !important;
-}
-
 .home-page.is-mobile-like .intro-content .home-guide,
 .home-page.is-mobile-like .intro-content .start-here,
 .home-page.is-mobile-like .intro-content .home-guide *,
@@ -4778,37 +4808,19 @@ pointer-events: none !important;
 pointer-events: auto !important;
 }
 
-/* Entrance screen */
-.home-page.is-mobile-like .entrance-overlay {
-z-index: 60 !important;
-display: flex !important;
-align-items: center !important;
-justify-content: center !important;
-
-padding: 14px !important;
-overflow: hidden !important;
-}
-
 .home-page.is-mobile-like .entrance-card {
-width: min(760px, calc(100dvh - 28px)) !important;
-max-height: calc(100dvw - 28px) !important;
+width: min(94vw, 520px) !important;
+max-height: calc(100dvh - 28px) !important;
 
 overflow-y: auto !important;
-padding: 12px 14px !important;
+padding: 14px 16px !important;
 border-radius: 24px !important;
-}
-
-.home-page.is-mobile-like .entrance-eyebrow {
-font-size: 0.68rem !important;
-margin-bottom: 6px !important;
 }
 
 .home-page.is-mobile-like .entrance-title {
 width: 100% !important;
-max-width: 100% !important;
-font-size: clamp(0.95rem, 3.6dvw, 1.45rem) !important;
+font-size: clamp(1.1rem, 5.2vw, 1.75rem) !important;
 line-height: 1.02 !important;
-letter-spacing: 0.02em !important;
 text-wrap: balance !important;
 }
 
@@ -4822,6 +4834,7 @@ margin-top: 8px !important;
 grid-template-columns: 1fr !important;
 gap: 8px !important;
 margin-top: 10px !important;
+width: 100% !important;
 }
 
 .home-page.is-mobile-like .entrance-mini-card {
@@ -4857,16 +4870,7 @@ font-size: 0.72rem !important;
 
 /* Intro title before entering */
 .home-page.is-mobile-like.is-home-intro-ready:not(.is-entered) .intro-content {
-position: absolute !important;
-inset: 0 !important;
-
 display: flex !important;
-align-items: flex-start !important;
-justify-content: flex-start !important;
-
-padding: 16px 14px 24px !important;
-transform: none !important;
-overflow-y: auto !important;
 }
 
 .home-page.is-mobile-like.is-home-intro-ready:not(.is-entered) .home-guide-grid {
@@ -4908,27 +4912,20 @@ font-size: 0.88rem !important;
 .home-page.is-mobile-like.is-home-intro-ready:not(.is-entered) .site-title-center {
 width: 100% !important;
 max-width: 100% !important;
-margin: 0 0 6px !important;
-font-size: clamp(0.95rem, 3.6dvw, 1.45rem) !important;
+font-size: clamp(1.1rem, 5.2vw, 1.75rem) !important;
 line-height: 1.02 !important;
-letter-spacing: 0.02em !important;
 text-wrap: balance !important;
-}
-
-.home-page.is-mobile-like.is-home-intro-ready:not(.is-entered) .start-here-title {
-font-size: clamp(0.92rem, 3.1dvw, 1.15rem) !important;
-}
-
-.home-page.is-mobile-like.is-home-intro-ready:not(.is-entered) .click-hint {
-margin-top: 10px !important;
-font-size: clamp(0.72rem, 2.5dvw, 0.88rem) !important;
-line-height: 1.2 !important;
 }
 
 .home-page.is-mobile-like.is-home-intro-ready:not(.is-entered) .home-guide,
 .home-page.is-mobile-like.is-home-intro-ready:not(.is-entered) .start-here {
 width: 100% !important;
 max-width: 100% !important;
+}
+
+.home-page.is-mobile-like.is-home-intro-ready:not(.is-entered) .click-hint {
+margin-top: 18px !important;
+font-size: clamp(0.82rem, 2.3dvh, 1rem) !important;
 }
 
 /* Entered state */
@@ -4946,15 +4943,13 @@ pointer-events: none !important;
 
 .home-page.is-mobile-like.is-entered .site-title-corner {
 position: absolute !important;
-top: 10px !important;
-left: 12px !important;
+top: 12px !important;
+left: 14px !important;
 z-index: 40 !important;
 
-max-width: min(42dvh, 300px) !important;
-font-size: clamp(0.68rem, 2.5dvw, 0.92rem) !important;
-line-height: 1.05 !important;
-letter-spacing: 0.015em !important;
-text-wrap: balance !important;
+max-width: 260px !important;
+font-size: clamp(1rem, 3.6dvh, 1.35rem) !important;
+line-height: 0.92 !important;
 
 opacity: 0.96 !important;
 transform: none !important;
@@ -5231,31 +5226,14 @@ z-index: 37 !important;
 display: none !important;
 }
 
-/* FAQ modal */
-.home-page.is-mobile-like .faq-overlay {
-position: absolute !important;
-inset: 10px !important;
-
-display: flex !important;
-align-items: flex-start !important;
-justify-content: center !important;
-
-padding: 8px !important;
-overflow: auto !important;
-z-index: 80 !important;
-}
-
 .home-page.is-mobile-like .faq-panel {
-width: min(760px, calc(100dvh - 32px)) !important;
-max-height: calc(100dvw - 32px) !important;
-
 overflow-y: auto !important;
 padding: 14px !important;
 border-radius: 22px !important;
 }
 
 .home-page.is-mobile-like .faq-header h2 {
-font-size: clamp(1.1rem, 4dvw, 1.65rem) !important;
+font-size: clamp(1.05rem, 4.8vw, 1.5rem) !important;
 line-height: 1.05 !important;
 text-wrap: balance !important;
 }
@@ -5367,9 +5345,8 @@ transform: none !important;
 touch-action: none !important;
 }
 
-/* Keep only the UI shell rotated sideways. */
-.home-page.is-mobile-like .home-ui-shell,
-.home-page.is-mobile-like .entrance-overlay {
+/* Keep only the map controls shell rotated sideways. */
+.home-page.is-mobile-like .home-ui-shell {
 position: fixed !important;
 inset: auto !important;
 
@@ -5381,6 +5358,22 @@ height: 100dvw !important;
 
 transform: translate(-50%, -50%) rotate(90deg) !important;
 transform-origin: center center !important;
+}
+
+.home-page.is-mobile-like .intro-content,
+.home-page.is-mobile-like .entrance-overlay,
+.home-page.is-mobile-like .faq-overlay {
+transform: none !important;
+}
+
+.home-page.is-mobile-like .entrance-card {
+width: min(94vw, 520px) !important;
+max-height: calc(100dvh - 24px) !important;
+}
+
+.home-page.is-mobile-like .faq-panel {
+width: min(94vw, 520px) !important;
+max-height: calc(100dvh - 24px) !important;
 }
 
 /* Since the map is no longer rotated, do not apply the old entered shift. */

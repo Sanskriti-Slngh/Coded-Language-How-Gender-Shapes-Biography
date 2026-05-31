@@ -355,7 +355,6 @@ function App() {
         </section>
       )}
 
-      <div ref={uiShellRef} id="home-ui-shell" className="home-ui-shell">
       <section className="intro-content">
         <h1 className="site-title-center">Gendered Language in Biographies</h1>
 
@@ -423,32 +422,6 @@ function App() {
           Gendered Language in Biographies
         </h1>
       </section>
-
-      <div
-        className="view-controls"
-        onPointerDown={(event) => event.stopPropagation()}
-      >
-        <div className="view-toggle-row">
-          <button
-            className={pointColorMode === "raw" ? "active" : ""}
-            onClick={() => setPointColorMode("raw")}
-          >
-            Raw labels
-          </button>
-
-          <button
-            className={pointColorMode === "local" ? "active" : ""}
-            onClick={() => setPointColorMode("local")}
-          >
-            Local pattern
-          </button>
-        </div>
-
-        <p className="view-mode-note">
-          Raw shows the biography's listed label. Local colors each dot by the
-          labels of nearby biographies in the current view.
-        </p>
-      </div>
 
       {isFaqOpen && (
         <section
@@ -775,6 +748,33 @@ function App() {
           </div>
         </section>
       )}
+
+      <div ref={uiShellRef} id="home-ui-shell" className="home-ui-shell">
+      <div
+        className="view-controls"
+        onPointerDown={(event) => event.stopPropagation()}
+      >
+        <div className="view-toggle-row">
+          <button
+            className={pointColorMode === "raw" ? "active" : ""}
+            onClick={() => setPointColorMode("raw")}
+          >
+            Raw labels
+          </button>
+
+          <button
+            className={pointColorMode === "local" ? "active" : ""}
+            onClick={() => setPointColorMode("local")}
+          >
+            Local pattern
+          </button>
+        </div>
+
+        <p className="view-mode-note">
+          Raw shows the biography's listed label. Local colors each dot by the
+          labels of nearby biographies in the current view.
+        </p>
+      </div>
 
       {!isPointSelected && (
         <div
