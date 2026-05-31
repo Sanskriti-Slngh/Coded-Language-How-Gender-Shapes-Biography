@@ -286,6 +286,11 @@ function App() {
       } ${hasPressedExplore ? "has-pressed-explore" : ""} ${
         deviceMode.isMobileLayout ? "is-mobile-like" : ""
       }`}
+      aria-label={
+        deviceMode.isMobileLayout && isHomeIntroReady && !isEntered
+          ? "Gendered Language in Biographies"
+          : undefined
+      }
       onPointerDownCapture={handlePagePointerDownCapture}
     >
       <LatentIntro
@@ -309,7 +314,11 @@ function App() {
         >
           <div className="entrance-card">
             <p className="entrance-eyebrow">Public biographies → visible patterns</p>
-            <h1 className="entrance-title">Gendered Language in Biographies</h1>
+            <h1 className="entrance-title">
+              {deviceMode.isMobileLayout
+                ? "Gendered Language"
+                : "Gendered Language in Biographies"}
+            </h1>
 
             <p className="entrance-purpose">
               An interactive analysis of how public biographies describe men and women
@@ -356,7 +365,9 @@ function App() {
       )}
 
       <section className="intro-content">
-        <h1 className="site-title-center">Gendered Language in Biographies</h1>
+        {!(deviceMode.isMobileLayout && isHomeIntroReady && !isEntered) && (
+          <h1 className="site-title-center">Gendered Language in Biographies</h1>
+        )}
 
         {isHomeIntroReady && !isEntered && (
           <>
@@ -419,7 +430,9 @@ function App() {
         </p>
 
         <h1 className="site-title-corner" aria-hidden="true">
-          Gendered Language in Biographies
+          {deviceMode.isMobileLayout
+            ? "Gendered Language"
+            : "Gendered Language in Biographies"}
         </h1>
       </section>
 
