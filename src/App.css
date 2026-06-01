@@ -90,6 +90,7 @@
 }
 
 .home-guide,
+.method-pipeline,
 .start-here {
   pointer-events: auto;
   width: min(920px, 94vw);
@@ -128,6 +129,100 @@
   line-height: 1.32;
   color: #071f45;
   text-shadow: var(--text-halo-body);
+}
+
+.method-pipeline {
+  margin-top: clamp(16px, 2.8vw, 28px);
+  text-align: left;
+}
+
+.method-pipeline-title {
+  margin: 0;
+  font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  letter-spacing: 0.08em;
+  font-weight: 400;
+  color: #041528;
+  text-align: center;
+  text-shadow: var(--text-halo-title);
+}
+
+.method-pipeline-lead {
+  margin: clamp(10px, 1.6vw, 14px) auto 0;
+  max-width: 62ch;
+  font-family: "Times New Roman", Times, serif;
+  font-size: clamp(0.96rem, 1.25vw, 1.08rem);
+  line-height: 1.38;
+  color: rgba(7, 31, 69, 0.82);
+  text-align: center;
+  text-shadow: var(--text-halo-body);
+}
+
+.method-pipeline-flow {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  list-style: none;
+  margin: clamp(14px, 2.2vw, 22px) 0 0;
+  padding: clamp(14px, 2vw, 20px);
+  border: 1px solid rgba(7, 31, 69, 0.12);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: 0 14px 40px rgba(7, 31, 69, 0.08);
+  backdrop-filter: blur(12px);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+
+.method-pipeline-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+  flex: 0 0 auto;
+}
+
+.method-pipeline-step-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 999px;
+  background: rgba(7, 31, 69, 0.1);
+  color: rgba(7, 31, 69, 0.72);
+  font-family: "Times New Roman", Times, serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.method-pipeline-step-label {
+  font-family: "Times New Roman", Times, serif;
+  font-size: clamp(0.82rem, 1.05vw, 0.96rem);
+  line-height: 1.25;
+  color: #071f45;
+  text-shadow: var(--text-halo-body);
+  white-space: nowrap;
+}
+
+.method-pipeline-arrow {
+  margin: 0 clamp(6px, 1vw, 10px);
+  color: rgba(7, 31, 69, 0.42);
+  font-family: "Times New Roman", Times, serif;
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  line-height: 1;
+}
+
+.method-pipeline-flow--faq {
+  justify-content: flex-start;
+  margin-top: 12px;
+  margin-bottom: 18px;
+  padding: 14px 16px;
 }
 
 .start-here {
@@ -191,6 +286,36 @@
 @media (max-width: 760px) {
   .home-guide-grid {
     grid-template-columns: 1fr;
+  }
+
+  .method-pipeline-flow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    overflow-x: visible;
+  }
+
+  .method-pipeline-step {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .method-pipeline-step-label {
+    white-space: normal;
+    flex: 1 1 auto;
+  }
+
+  .method-pipeline-arrow {
+    display: none;
+  }
+
+  .method-pipeline-step:not(:last-child)::after {
+    content: "↓";
+    margin-left: 1.55rem;
+    color: rgba(7, 31, 69, 0.42);
+    font-family: "Times New Roman", Times, serif;
+    font-size: 0.95rem;
+    line-height: 1;
   }
 
   .start-here-actions {
@@ -300,6 +425,7 @@
 .is-intro .intro-subtitle,
 .is-intro .click-hint,
 .is-intro .home-guide,
+.is-intro .method-pipeline,
 .is-intro .start-here {
   opacity: 1;
   transform: translateY(0) scale(1);
@@ -320,6 +446,7 @@
 .is-entered .intro-subtitle,
 .is-entered .click-hint,
 .is-entered .home-guide,
+.is-entered .method-pipeline,
 .is-entered .start-here {
   opacity: 0;
   transform: translateY(18px);
@@ -3953,6 +4080,7 @@
 }
 
 .is-home-intro-ready:not(.is-entered) .home-guide,
+.is-home-intro-ready:not(.is-entered) .method-pipeline,
 .is-home-intro-ready:not(.is-entered) .start-here {
   transition:
     opacity 700ms ease,

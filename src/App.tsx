@@ -66,6 +66,35 @@ const HOME_GUIDE_ITEMS = [
   },
 ] as const;
 
+const METHOD_PIPELINE_STEPS = [
+  "Collect biographies",
+  "Clean text",
+  "Mask explicit gender terms",
+  "Embed biographies",
+  "Reduce to 2D",
+  "Compute nearest neighbors",
+  "Estimate local gender framing",
+  "Show explanation",
+] as const;
+
+function MethodPipeline({ className = "" }: { className?: string }) {
+  return (
+    <ol className={`method-pipeline-flow${className ? ` ${className}` : ""}`}>
+      {METHOD_PIPELINE_STEPS.map((step, index) => (
+        <li key={step} className="method-pipeline-step">
+          <span className="method-pipeline-step-index">{index + 1}</span>
+          <span className="method-pipeline-step-label">{step}</span>
+          {index < METHOD_PIPELINE_STEPS.length - 1 && (
+            <span className="method-pipeline-arrow" aria-hidden="true">
+              →
+            </span>
+          )}
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 function App() {
   const [isEntered, setIsEntered] = useState(false);
   const [pointColorMode, setPointColorMode] =
@@ -136,7 +165,7 @@ function App() {
     const target = event.target as HTMLElement;
     if (
       target.closest(
-        ".home-guide, .start-here, .faq-overlay, .entrance-overlay, .view-controls, .explore-sidebar",
+        ".home-guide, .method-pipeline, .start-here, .faq-overlay, .entrance-overlay, .view-controls, .explore-sidebar",
       )
     ) {
       return;
@@ -382,6 +411,15 @@ function App() {
               </div>
             </section>
 
+            <section className="method-pipeline" aria-label="Method and how it works">
+              <h2 className="method-pipeline-title">Method / How It Works</h2>
+              <p className="method-pipeline-lead">
+                Each dot on the map follows the same pipeline—from raw public biographies to
+                neighborhood-level gender framing and per-biography explanations.
+              </p>
+              <MethodPipeline />
+            </section>
+
             <section className="start-here" aria-label="Start here">
               <h2 className="start-here-title">Start Here</h2>
               <div className="start-here-actions">
@@ -530,6 +568,12 @@ function App() {
 
               <article id="faq-methodology" className="faq-section">
                 <h3>Why trust this project?</h3>
+                <h4 className="faq-subheading">How it works</h4>
+                <p>
+                  Every biography on the map is processed through the same steps before it appears
+                  as a dot with local framing and explanation text.
+                </p>
+                <MethodPipeline className="method-pipeline-flow--faq" />
                 <h4 className="faq-subheading">Dataset</h4>
                 <p>
                   This site visualizes about 79,680 public biographies drawn from academic and
