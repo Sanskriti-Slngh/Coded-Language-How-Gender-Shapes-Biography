@@ -1,0 +1,8 @@
+{
+  "biographyCount": 79680,
+  "wordCount": {
+    "median": 113.0,
+    "p10": 67.0,
+    "p90": 270.0
+  }
+}

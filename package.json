@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sanity-check:gender:setup": "python3 -m venv .venv-analysis && .venv-analysis/bin/pip install -r scripts/requirements-analysis.txt",
+    "sanity-check:gender": ".venv-analysis/bin/python scripts/gender_neighborhood_sanity_check.py"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",

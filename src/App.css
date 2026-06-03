@@ -9,6 +9,12 @@
 
   --pink-glow: rgba(243, 166, 200, 0.28);
   --blue-glow: rgba(141, 180, 255, 0.32);
+  --nav-bg: rgba(255, 236, 245, 0.94);
+  --nav-border: rgba(243, 166, 200, 0.65);
+  --nav-text: #5a2848;
+  --nav-text-active: #3d1830;
+  --nav-hover-bg: rgba(243, 166, 200, 0.38);
+  --nav-active-bg: rgba(238, 127, 189, 0.45);
 
   /* White halos Ã¢â‚¬â€ lift letterforms off the point cloud without boxes */
   --text-halo-body:
@@ -33,6 +39,15 @@
     var(--corner-title-top) + (var(--corner-title-size) * var(--corner-title-line)) +
       var(--corner-stack-gap)
   );
+
+  /* Clearance below fixed site nav (homepage + intro after entrance) */
+  --nav-clearance: max(118px, calc(env(safe-area-inset-top) + 96px));
+  --nav-clearance-mobile: max(104px, calc(env(safe-area-inset-top) + 84px));
+  --entrance-top-offset: max(56px, calc(env(safe-area-inset-top) + 40px));
+
+  /* Explore map page (after entering): title, sidebar, controls below pink nav */
+  --explore-ui-top: max(74px, calc(env(safe-area-inset-top) + 60px));
+  --explore-ui-top-mobile: max(68px, calc(env(safe-area-inset-top) + 56px));
 
   position: relative;
   min-height: 100vh;
@@ -457,6 +472,15 @@
   opacity: 0.88;
   transform: translateY(0);
   transition-delay: 220ms;
+}
+
+/* Explore map page: keep corner title, sidebar, and controls below site nav */
+.home-page.is-entered {
+  --corner-title-top: var(--explore-ui-top);
+}
+
+.home-page.is-entered .view-controls {
+  top: var(--explore-ui-top);
 }
 
 /* After entering, make overlay lighter so user sees the latent space more */
@@ -3861,10 +3885,12 @@
   pointer-events: auto;
 
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 
-  padding: clamp(22px, 5vw, 72px);
+  padding: var(--entrance-top-offset) clamp(22px, 5vw, 72px) clamp(22px, 5vw, 72px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background:
     radial-gradient(circle at 18% 18%, rgba(255, 214, 235, 0.54), transparent 34%),
     radial-gradient(circle at 82% 24%, rgba(197, 224, 255, 0.62), transparent 36%),
@@ -4060,17 +4086,35 @@
 .is-home-intro-ready .intro-content {
   opacity: 1;
   justify-content: flex-start;
-  padding-top: clamp(28px, 5vh, 72px);
+  padding-top: var(--nav-clearance);
   padding-bottom: clamp(28px, 5vh, 72px);
   transition: opacity 680ms ease;
 }
 
-.is-home-intro-ready .site-title-center {
+.is-home-intro-ready:not(.is-entered) .site-title-center {
+  margin-top: clamp(12px, 2vh, 20px);
+  margin-bottom: 0;
+}
+
+.is-home-intro-ready.is-entered .site-title-center {
   margin-bottom: 0;
 }
 
 .is-home-intro-ready:not(.is-entered) .intro-content {
-  padding-top: clamp(16px, 3vh, 40px);
+  padding-top: var(--nav-clearance);
+  justify-content: flex-start;
+}
+
+.is-home-intro-ready:not(.is-entered) .home-guide {
+  margin-top: clamp(4px, 1vh, 12px);
+}
+
+.is-home-intro-ready:not(.is-entered) .start-here {
+  margin-top: clamp(20px, 3vh, 32px);
+}
+
+.is-home-intro-ready:not(.is-entered) .click-hint {
+  margin-top: clamp(20px, 3.5vw, 36px);
 }
 
 .is-home-intro-ready .click-hint {
@@ -4884,10 +4928,11 @@ max-height: 100dvh !important;
 transform: none !important;
 z-index: 60 !important;
 display: flex !important;
-align-items: center !important;
+align-items: flex-start !important;
 justify-content: center !important;
-padding: max(12px, env(safe-area-inset-top)) 14px max(16px, env(safe-area-inset-bottom)) !important;
-overflow: hidden !important;
+padding: var(--entrance-top-offset) 14px max(16px, env(safe-area-inset-bottom)) !important;
+overflow-y: auto !important;
+overscroll-behavior: contain !important;
 }
 
 .home-page.is-mobile-like .faq-overlay {
@@ -4935,6 +4980,10 @@ pointer-events: auto !important;
 .home-page.is-mobile-like .intro-content .home-guide *,
 .home-page.is-mobile-like .intro-content .start-here * {
 pointer-events: auto !important;
+}
+
+.home-page.is-mobile-like .site-nav {
+  pointer-events: auto !important;
 }
 
 .home-page.is-mobile-like .entrance-card {
@@ -5000,7 +5049,8 @@ font-size: 0.72rem !important;
 /* Intro title before entering */
 .home-page.is-mobile-like.is-home-intro-ready:not(.is-entered) .intro-content {
 display: flex !important;
-padding-top: max(10px, env(safe-area-inset-top)) !important;
+padding: var(--nav-clearance-mobile) 14px max(20px, env(safe-area-inset-bottom)) !important;
+justify-content: flex-start !important;
 }
 
 .home-page.is-mobile-like.is-home-intro-ready:not(.is-entered) .home-guide-grid {
@@ -5069,7 +5119,7 @@ pointer-events: none !important;
 
 .home-page.is-mobile-like.is-entered .site-title-corner {
 position: absolute !important;
-top: 12px !important;
+top: var(--explore-ui-top-mobile) !important;
 left: 14px !important;
 z-index: 40 !important;
 
@@ -5084,7 +5134,7 @@ transform: none !important;
 /* Raw / Local controls — top right */
 .home-page.is-mobile-like.is-entered .view-controls {
 position: absolute !important;
-top: 10px !important;
+top: var(--explore-ui-top-mobile) !important;
 right: 12px !important;
 bottom: auto !important;
 left: auto !important;
@@ -5125,7 +5175,7 @@ display: none !important;
 /* Explore panel — left side, readable and scrollable */
 .home-page.is-mobile-like.is-entered .explore-sidebar {
 position: absolute !important;
-top: 56px !important;
+top: calc(var(--explore-ui-top-mobile) + 2.85rem) !important;
 left: 12px !important;
 right: auto !important;
 bottom: 12px !important;
@@ -6001,4 +6051,138 @@ body.mobile-point-selected .home-page.is-mobile-like .latent-stage {
 .selected-exhibit-overlay.is-mobile-sideways-exhibit .phrase-chip {
   font-size: 0.56rem !important;
   padding: 4px 6px !important;
+}
+
+/* ---------- Reviewer nav, model cards ---------- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.site-nav {
+  position: fixed;
+  top: max(10px, env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  width: min(96vw, 1100px);
+  pointer-events: auto;
+}
+
+.site-nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin: 0;
+  padding: 8px 10px;
+  list-style: none;
+  border-radius: 999px;
+  background: var(--nav-bg);
+  border: 1px solid var(--nav-border);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 8px 28px var(--pink-glow),
+    0 2px 12px rgba(243, 166, 200, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.site-nav-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--nav-text);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.site-nav-button:hover {
+  color: var(--nav-text-active);
+  background: var(--nav-hover-bg);
+}
+
+.site-nav-button.is-active {
+  color: var(--nav-text-active);
+  background: var(--nav-active-bg);
+  box-shadow: inset 0 0 0 1px rgba(238, 127, 189, 0.35);
+}
+
+.model-card-table,
+.eval-metrics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  margin: 10px 0 14px;
+}
+
+.model-card-table th,
+.model-card-table td,
+.eval-metrics-table th,
+.eval-metrics-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 10px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.model-card-table th {
+  width: 34%;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.eval-metrics-table th[scope="col"] {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.doc-section-note {
+  font-size: 0.82rem;
+  opacity: 0.85;
+}
+
+.explanation-disclaimer-card {
+  border-left: 3px solid rgba(160, 200, 255, 0.5);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.explanation-disclaimer-card p {
+  margin: 0 0 8px;
+}
+
+.explanation-disclaimer-card p:last-child {
+  margin-bottom: 0;
+}
+
+.home-page.is-home-intro-ready:not(.is-entered) .intro-content {
+  padding-top: var(--nav-clearance);
+}
+
+.home-page.is-home-intro-ready.is-entered .intro-content {
+  padding-top: 0;
+}
+
+.home-page.is-entered .site-nav {
+  top: max(8px, env(safe-area-inset-top));
+}
+
+.home-page.is-mobile-like .site-nav-list {
+  border-radius: 16px;
+  max-height: 42vh;
+  overflow-y: auto;
 }

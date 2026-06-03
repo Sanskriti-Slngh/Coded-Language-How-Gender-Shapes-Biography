@@ -1,0 +1,606 @@
+[
+  {
+    "id": "technical-authority",
+    "emoji": "🧠",
+    "title": "Who Owns Technical Authority?",
+    "tagline": "Technical Authority Region",
+    "stats": {
+      "total": 296,
+      "womanPct": 15.5,
+      "manPct": 84.5,
+      "womanCount": 46,
+      "manCount": 250,
+      "fields": [
+        "Computer Science",
+        "Engineering",
+        "Mathematics",
+        "Physics"
+      ]
+    },
+    "dominantFrames": [
+      "Technical authority and engineering",
+      "Education, teaching, and public learning",
+      "Senior prestige and fellowships",
+      "Current-position framing",
+      "Publication record and scholarly output",
+      "Established contribution and legacy"
+    ],
+    "profiles": {
+      "women": [
+        {
+          "bioId": "WIKI_Q14250",
+          "name": "Barbara Simons",
+          "genderLabel": "woman",
+          "localWomanShare": 0.0333,
+          "fieldBucket": "computer_science_technology",
+          "neighborComposition": {
+            "women": 0,
+            "men": 5
+          }
+        },
+        {
+          "bioId": "WIKI_Q11609",
+          "name": "Shafrira Goldwasser",
+          "genderLabel": "woman",
+          "localWomanShare": 0.0333,
+          "fieldBucket": "computer_science_technology",
+          "neighborComposition": {
+            "women": 0,
+            "men": 5
+          }
+        },
+        {
+          "bioId": "WIKI_Q25830793",
+          "name": "Jane Hamilton Hall",
+          "genderLabel": "woman",
+          "localWomanShare": 0.0333,
+          "fieldBucket": "physical_sciences",
+          "neighborComposition": {
+            "women": 0,
+            "men": 5
+          }
+        },
+        {
+          "bioId": "WIKI_Q18354700",
+          "name": "Sanghamitra Bandyopadhyay",
+          "genderLabel": "woman",
+          "localWomanShare": 0.0333,
+          "fieldBucket": "computer_science_technology",
+          "neighborComposition": {
+            "women": 0,
+            "men": 5
+          }
+        }
+      ],
+      "men": [
+        {
+          "bioId": "WIKI_Q2524992",
+          "name": "Thomas H. Cormen",
+          "genderLabel": "man",
+          "localWomanShare": 0.2333,
+          "fieldBucket": "computer_science_technology",
+          "neighborComposition": {
+            "women": 1,
+            "men": 4
+          }
+        },
+        {
+          "bioId": "WIKI_Q92983",
+          "name": "Robert Sedgewick",
+          "genderLabel": "man",
+          "localWomanShare": 0.1333,
+          "fieldBucket": "computer_science_technology",
+          "neighborComposition": {
+            "women": 3,
+            "men": 2
+          }
+        },
+        {
+          "bioId": "WIKI_Q92900",
+          "name": "Mark N. Wegman",
+          "genderLabel": "man",
+          "localWomanShare": 0.0,
+          "fieldBucket": "computer_science_technology",
+          "neighborComposition": {
+            "women": 2,
+            "men": 3
+          }
+        },
+        {
+          "bioId": "WIKI_Q5302068",
+          "name": "Douglas W. Jones",
+          "genderLabel": "man",
+          "localWomanShare": 0.1667,
+          "fieldBucket": "computer_science_technology",
+          "neighborComposition": {
+            "women": 0,
+            "men": 5
+          }
+        }
+      ]
+    },
+    "interaction": "hover-neighbors",
+    "neighborLinks": {
+      "WIKI_Q14250": [
+        "WIKI_Q2524992",
+        "WIKI_Q92983",
+        "WIKI_Q5302068"
+      ]
+    },
+    "observation": "Women in this region are often embedded among male technical leaders. The language of technical authority forms one of the most male-dominated areas of the biography landscape."
+  },
+  {
+    "id": "advocacy-rights",
+    "emoji": "⚖️",
+    "title": "When Men Enter Female Spaces",
+    "tagline": "Advocacy & Rights Region",
+    "stats": {
+      "total": 49,
+      "womanPct": 95.9,
+      "manPct": 4.1,
+      "womanCount": 47,
+      "manCount": 2
+    },
+    "dominantFrames": [
+      "Rights, advocacy, and justice",
+      "Education, teaching, and public learning",
+      "War, state, and public office",
+      "Health, psychology, and social support",
+      "Current research focus",
+      "Senior prestige and fellowships"
+    ],
+    "profiles": {
+      "women": [
+        {
+          "bioId": "WIKI_Q16242072",
+          "name": "Jennifer Nez Denetdale",
+          "genderLabel": "woman",
+          "localWomanShare": 0.9333,
+          "fieldBucket": "unknown",
+          "neighborComposition": {
+            "women": 4,
+            "men": 1
+          }
+        },
+        {
+          "bioId": "WIKI_Q107037",
+          "name": "Leymah Roberta Gbowee",
+          "genderLabel": "woman",
+          "localWomanShare": 0.8,
+          "fieldBucket": "social_sciences",
+          "neighborComposition": {
+            "women": 1,
+            "men": 4
+          }
+        }
+      ],
+      "men": [
+        {
+          "bioId": "WIKI_Q1187542",
+          "name": "Denis Mukwege",
+          "genderLabel": "man",
+          "localWomanShare": 0.9,
+          "fieldBucket": "medicine_health",
+          "neighborComposition": {
+            "women": 2,
+            "men": 3
+          }
+        },
+        {
+          "bioId": "WIKI_Q99443560",
+          "name": "Michael Goodhart",
+          "genderLabel": "man",
+          "localWomanShare": 0.9667,
+          "fieldBucket": "social_sciences",
+          "neighborComposition": {
+            "women": 5,
+            "men": 0
+          }
+        },
+        {
+          "bioId": "WIKI_Q20640854",
+          "name": "Michael Kaufman",
+          "genderLabel": "man",
+          "localWomanShare": 0.8667,
+          "fieldBucket": "unknown",
+          "neighborComposition": {
+            "women": 2,
+            "men": 3
+          }
+        },
+        {
+          "bioId": "WIKI_Q1928614",
+          "name": "Michael Messner",
+          "genderLabel": "man",
+          "localWomanShare": 0.8667,
+          "fieldBucket": "social_sciences",
+          "neighborComposition": {
+            "women": 3,
+            "men": 2
+          }
+        }
+      ]
+    },
+    "interaction": "click-local-share",
+    "observation": "The model is not learning biological sex. It is learning narrative framing. Biographies emphasizing advocacy, care, and social justice cluster within regions largely occupied by women.",
+    "neighborLinks": {
+      "WIKI_Q1187542": [
+        "WIKI_Q16242072",
+        "WIKI_Q136619766",
+        "WIKI_Q6962500",
+        "WIKI_Q7525287",
+        "WIKI_Q22915125"
+      ],
+      "WIKI_Q99443560": [
+        "WIKI_Q16242072",
+        "WIKI_Q136619766",
+        "WIKI_Q6962500",
+        "WIKI_Q7525287",
+        "WIKI_Q22915125"
+      ],
+      "WIKI_Q20640854": [
+        "WIKI_Q107037",
+        "WIKI_Q16242072",
+        "WIKI_Q136619766",
+        "WIKI_Q6962500",
+        "WIKI_Q7525287"
+      ],
+      "WIKI_Q1928614": [
+        "WIKI_Q16242072",
+        "WIKI_Q136619766",
+        "WIKI_Q6962500",
+        "WIKI_Q7525287",
+        "WIKI_Q22915125"
+      ]
+    }
+  },
+  {
+    "id": "achievement-vs-representation",
+    "emoji": "📊",
+    "title": "Achievement vs Representation",
+    "tagline": "The strongest separation is framing, not gender",
+    "featured": true,
+    "stats": {
+      "total": 39839,
+      "womanPct": 15.7,
+      "manPct": 84.3,
+      "womanCount": 6273,
+      "manCount": 33566
+    },
+    "dominantFrames": [],
+    "profiles": {
+      "women": [
+        {
+          "bioId": "WIKI_Q14250",
+          "name": "Barbara Simons",
+          "genderLabel": "woman",
+          "localWomanShare": 0.0333,
+          "fieldBucket": "computer_science_technology",
+          "neighborComposition": {
+            "women": 0,
+            "men": 5
+          }
+        },
+        {
+          "bioId": "WIKI_Q11609",
+          "name": "Shafrira Goldwasser",
+          "genderLabel": "woman",
+          "localWomanShare": 0.0333,
+          "fieldBucket": "computer_science_technology",
+          "neighborComposition": {
+            "women": 0,
+            "men": 5
+          }
+        }
+      ],
+      "men": [
+        {
+          "bioId": "WIKI_Q2524992",
+          "name": "Thomas H. Cormen",
+          "genderLabel": "man",
+          "localWomanShare": 0.2333,
+          "fieldBucket": "computer_science_technology",
+          "neighborComposition": {
+            "women": 1,
+            "men": 4
+          }
+        },
+        {
+          "bioId": "WIKI_Q92983",
+          "name": "Robert Sedgewick",
+          "genderLabel": "man",
+          "localWomanShare": 0.1333,
+          "fieldBucket": "computer_science_technology",
+          "neighborComposition": {
+            "women": 3,
+            "men": 2
+          }
+        }
+      ]
+    },
+    "interaction": "show-top-frames",
+    "splitRegions": {
+      "left": {
+        "title": "Achievement & Authority",
+        "stats": {
+          "total": 36819,
+          "womanPct": 9.5,
+          "manPct": 90.5,
+          "womanCount": 3500,
+          "manCount": 33319
+        },
+        "dominantFrames": [
+          "developed",
+          "invented",
+          "professor",
+          "academy",
+          "received",
+          "fellow",
+          "research"
+        ],
+        "profiles": [
+          {
+            "bioId": "WIKI_Q14250",
+            "name": "Barbara Simons",
+            "genderLabel": "woman",
+            "localWomanShare": 0.0333,
+            "fieldBucket": "computer_science_technology"
+          },
+          {
+            "bioId": "WIKI_Q11609",
+            "name": "Shafrira Goldwasser",
+            "genderLabel": "woman",
+            "localWomanShare": 0.0333,
+            "fieldBucket": "computer_science_technology"
+          },
+          {
+            "bioId": "WIKI_Q2524992",
+            "name": "Thomas H. Cormen",
+            "genderLabel": "man",
+            "localWomanShare": 0.2333,
+            "fieldBucket": "computer_science_technology"
+          },
+          {
+            "bioId": "WIKI_Q92983",
+            "name": "Robert Sedgewick",
+            "genderLabel": "man",
+            "localWomanShare": 0.1333,
+            "fieldBucket": "computer_science_technology"
+          }
+        ],
+        "tint": "achievement"
+      },
+      "right": {
+        "title": "Representation & Identity",
+        "stats": {
+          "total": 3020,
+          "womanPct": 91.8,
+          "manPct": 8.2,
+          "womanCount": 2773,
+          "manCount": 247
+        },
+        "dominantFrames": [
+          "first woman",
+          "advocate",
+          "rights",
+          "representation",
+          "equality",
+          "activist"
+        ],
+        "profiles": [
+          {
+            "bioId": "WIKI_Q1187542",
+            "name": "Denis Mukwege",
+            "genderLabel": "man",
+            "localWomanShare": 0.9,
+            "fieldBucket": "medicine_health"
+          },
+          {
+            "bioId": "WIKI_Q99443560",
+            "name": "Michael Goodhart",
+            "genderLabel": "man",
+            "localWomanShare": 0.9667,
+            "fieldBucket": "social_sciences"
+          },
+          {
+            "bioId": "WIKI_Q20640854",
+            "name": "Michael Kaufman",
+            "genderLabel": "man",
+            "localWomanShare": 0.8667,
+            "fieldBucket": "unknown"
+          },
+          {
+            "bioId": "WIKI_Q6962500",
+            "name": "Nancie Caraway",
+            "genderLabel": "woman",
+            "localWomanShare": 1.0,
+            "fieldBucket": "social_sciences"
+          },
+          {
+            "bioId": "WIKI_Q19874302",
+            "name": "G. Sofía Villa de Buentello",
+            "genderLabel": "woman",
+            "localWomanShare": 1.0,
+            "fieldBucket": "education"
+          },
+          {
+            "bioId": "WIKI_Q65965673",
+            "name": "Graciela Bográn",
+            "genderLabel": "woman",
+            "localWomanShare": 1.0,
+            "fieldBucket": "education"
+          }
+        ],
+        "tint": "representation"
+      }
+    },
+    "observation": "The strongest separation in the map is often not male versus female. It is achievement framing versus representation framing."
+  },
+  {
+    "id": "historical-prestige",
+    "emoji": "🏛",
+    "title": "Historical Prestige",
+    "tagline": "Historical Prestige Region",
+    "stats": {
+      "total": 91,
+      "womanPct": 1.1,
+      "manPct": 98.9,
+      "womanCount": 1,
+      "manCount": 90
+    },
+    "dominantFrames": [
+      "Senior prestige and fellowships",
+      "Historical/religious authority",
+      "Education, teaching, and public learning",
+      "War, state, and public office",
+      "Publication record and scholarly output",
+      "Established contribution and legacy"
+    ],
+    "profiles": {
+      "women": [
+        {
+          "bioId": "WIKI_Q4831210",
+          "name": "Ayesha Jalal",
+          "genderLabel": "woman",
+          "localWomanShare": 0.0333,
+          "fieldBucket": "humanities",
+          "neighborComposition": {
+            "women": 1,
+            "men": 4
+          }
+        },
+        {
+          "bioId": "WIKI_Q6761036",
+          "name": "Maria Baghramian",
+          "genderLabel": "woman",
+          "localWomanShare": 0.0333,
+          "fieldBucket": "humanities",
+          "neighborComposition": {
+            "women": 0,
+            "men": 5
+          }
+        },
+        {
+          "bioId": "WIKI_Q235426",
+          "name": "Theano",
+          "genderLabel": "woman",
+          "localWomanShare": 0.0333,
+          "fieldBucket": "humanities",
+          "neighborComposition": {
+            "women": 0,
+            "men": 5
+          }
+        },
+        {
+          "bioId": "WIKI_Q29358768",
+          "name": "Natalia Gheorghiu",
+          "genderLabel": "woman",
+          "localWomanShare": 0.0333,
+          "fieldBucket": "medicine_health",
+          "neighborComposition": {
+            "women": 0,
+            "men": 5
+          }
+        }
+      ],
+      "men": []
+    },
+    "interaction": "click-local-share",
+    "observation": "Women occupying positions of historical and scholarly authority often appear inside regions dominated by male biographies."
+  },
+  {
+    "id": "where-gender-disappears",
+    "emoji": "🌎",
+    "title": "Where Gender Disappears",
+    "tagline": "Balanced Region",
+    "stats": {
+      "total": 1069,
+      "womanPct": 59.9,
+      "manPct": 40.1,
+      "womanCount": 640,
+      "manCount": 429
+    },
+    "dominantFrames": [
+      "Education, teaching, and public learning",
+      "Senior prestige and fellowships",
+      "Health, psychology, and social support",
+      "Publication record and scholarly output",
+      "Current research focus",
+      "Arts, writing, and public voice"
+    ],
+    "profiles": {
+      "women": [
+        {
+          "bioId": "WIKI_Q17119895",
+          "name": "Aadel Lampe",
+          "genderLabel": "woman",
+          "localWomanShare": 0.5,
+          "fieldBucket": "education",
+          "neighborComposition": {
+            "women": 1,
+            "men": 4
+          }
+        },
+        {
+          "bioId": "WIKI_Q91940435",
+          "name": "Adina L. Roskies",
+          "genderLabel": "woman",
+          "localWomanShare": 0.5,
+          "fieldBucket": "humanities",
+          "neighborComposition": {
+            "women": 0,
+            "men": 5
+          }
+        },
+        {
+          "bioId": "WIKI_Q4693016",
+          "name": "Agnes Bolsø",
+          "genderLabel": "woman",
+          "localWomanShare": 0.5,
+          "fieldBucket": "social_sciences",
+          "neighborComposition": {
+            "women": 3,
+            "men": 2
+          }
+        }
+      ],
+      "men": [
+        {
+          "bioId": "WIKI_Q4662432",
+          "name": "Aaron Shirley",
+          "genderLabel": "man",
+          "localWomanShare": 0.5,
+          "fieldBucket": "medicine_health",
+          "neighborComposition": {
+            "women": 3,
+            "men": 2
+          }
+        },
+        {
+          "bioId": "WIKI_Q98576299",
+          "name": "Aaron Sojourner",
+          "genderLabel": "man",
+          "localWomanShare": 0.5,
+          "fieldBucket": "unknown",
+          "neighborComposition": {
+            "women": 3,
+            "men": 2
+          }
+        },
+        {
+          "bioId": "WIKI_Q60170815",
+          "name": "Abel Méndez",
+          "genderLabel": "man",
+          "localWomanShare": 0.5,
+          "fieldBucket": "unknown",
+          "neighborComposition": {
+            "women": 1,
+            "men": 4
+          }
+        }
+      ]
+    },
+    "interaction": "toggle-labels",
+    "observation": "Not every region is gendered. Some narrative styles are shared equally across men and women. Bias is concentrated in specific parts of the semantic landscape."
+  }
+]

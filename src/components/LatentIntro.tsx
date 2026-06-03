@@ -14,6 +14,10 @@ import Papa from "papaparse";
 import * as THREE from "three";
 
 import {
+  EXPLANATION_PANEL,
+  neighborhoodDisclaimer,
+} from "../content/explanationCopy";
+import {
   FULL_DATASET_POINT_COUNT,
   getDeviceMode,
   limitPointsForDevice,
@@ -70,6 +74,8 @@ type LatentIntroProps = {
   onLoadProgressChange?: (progress: LatentLoadProgress) => void;
   onLatentReadyChange?: (isReady: boolean) => void;
   uiShellRef?: RefObject<HTMLDivElement | null>;
+  requestedBioId?: string | null;
+  onRequestedBioIdHandled?: () => void;
 };
 
 type CsvPoint = {
@@ -1369,9 +1375,13 @@ function patternDirection(pred: string, prob: number | null | undefined): "woman
 
 function userFacingPatternLabel(pred: string, prob: number | null | undefined): string {
   const d = patternDirection(pred, prob);
-  if (d === "woman") return "Closer to woman-labeled writing patterns";
-  if (d === "man") return "Closer to man-labeled writing patterns";
-  return "Near the middle of the learned writing patterns";
+  if (d === "woman") {
+    return "Appears closer to woman-associated neighborhoods in embedding space";
+  }
+  if (d === "man") {
+    return "Appears closer to man-associated neighborhoods in embedding space";
+  }
+  return "Sits between woman- and man-associated neighborhoods in this corpus";
 }
 
 function compactPatternLabel(pred: string, prob: number | null | undefined): string {
@@ -1416,7 +1426,7 @@ function NearbyBiographyBar({
           <span>100% woman / mostly woman</span>
         </div>
         <p className={`nearby-marker-note ${dominantSide}`}>
-          The marker shows <strong>woman share</strong> on the bar; the large number shows the dominant nearby label.
+          {EXPLANATION_PANEL.nearbyBarNote}
         </p>
       </div>
     </div>
@@ -1472,7 +1482,7 @@ function FrameEvidenceColumn({ side, frames }: { side: FrameSide; frames: DataDr
     <section className={`frame-side-column ${isWoman ? "woman" : "man"}`}>
       <div className="frame-side-heading">
         <h4>{isWoman ? "Woman-associated frame evidence" : "Man-associated frame evidence"}</h4>
-        <p>{isWoman ? "Frames that pull this biography toward the woman-associated side of the learned separation." : "Frames that pull this biography toward the man-associated side of the learned separation."}</p>
+        <p>{isWoman ? EXPLANATION_PANEL.frameColumnWoman : EXPLANATION_PANEL.frameColumnMan}</p>
       </div>
       {frames.length === 0
         ? <p className="explanation-empty">No {frameSideLabel(side).toLowerCase()} frames listed for this point.</p>
@@ -1539,7 +1549,7 @@ function SimilarProfileList({ profiles, points, onSelectProfile }: { profiles: S
   return (
     <div className="similar-profile-strip">
       <h3>Similar biographies nearby</h3>
-      <p>Click a nearby profile to jump to that point and read its explanation.</p>
+      <p>{EXPLANATION_PANEL.similarProfilesLead}</p>
       <div className="similar-profile-list">
         {profiles.slice(0, 7).map((profile, i) => {
           const matched = findPointForSimilarProfile(profile, points);
@@ -1750,6 +1760,8 @@ function SelectedPointOverlay({
   const mapLean = mapLeanDisplay(point.frameInfo?.predictedMapLean || patternLabel);
   const labelChip = genderText ? `${cleanDisplayValue(genderText)}-labeled` : "Label unavailable";
   const similarProfiles = point.frameInfo?.similarProfiles ?? [];
+  const neighborhoodLean =
+    womanPercent >= 55 ? "woman" : manPercent >= 55 ? "man" : "mixed";
   const sidewaysFrameStyle = useSidewaysMobileOverlay(isMobileSideways);
 
   return (
@@ -1779,9 +1791,14 @@ function SelectedPointOverlay({
         <aside className="explanation-bar" aria-label="Point explanation">
           <div className="explanation-header">
             <div>
-              <p className="eyebrow">Point explanation</p>
-              <h2>Why this biography lands here</h2>
+              <p className="eyebrow">{EXPLANATION_PANEL.eyebrow}</p>
+              <h2>{EXPLANATION_PANEL.title}</h2>
             </div>
+          </div>
+
+          <div className="explanation-card explanation-disclaimer-card">
+            <p>{EXPLANATION_PANEL.disclaimer}</p>
+            <p>{neighborhoodDisclaimer(neighborhoodLean)}</p>
           </div>
 
           {!explanation && (
@@ -1872,7 +1889,7 @@ function SelectedPointOverlay({
               <PhraseEvidenceColumn side="man" title="Man-associated phrases" phrases={explanation?.topPhrasesPushingManStrict ?? []} emptyText="No man-associated phrases listed for this point." />
               <PhraseEvidenceColumn side="woman" title="Woman-associated phrases" phrases={explanation?.topPhrasesPushingWomanStrict ?? []} emptyText="No woman-associated phrases listed for this point." />
             </div>
-            <p className="explanation-help-note">These are not "good" or "bad" words. They are phrases the classifier learned were more common in woman-labeled or man-labeled biographies.</p>
+            <p className="explanation-help-note">{EXPLANATION_PANEL.phraseHelp}</p>
           </div>
         </aside>
       </div>
@@ -2192,6 +2209,8 @@ export default function LatentIntro({
   onLoadProgressChange,
   onLatentReadyChange,
   uiShellRef,
+  requestedBioId,
+  onRequestedBioIdHandled,
 }: LatentIntroProps) {
   const [points, setPoints] = useState<BioPoint[]>([]);
   const [isPointCloudVisible, setIsPointCloudVisible] = useState(false);
@@ -2298,6 +2317,12 @@ export default function LatentIntro({
     setIsMapInteracting(false);
     setSelectedPoint({ point, scenePosition: getScenePositionForPoint(point, layoutScale) });
   }
+
+  useEffect(() => {
+    if (!requestedBioId || points.length === 0) return;
+    selectPointByBioId(requestedBioId);
+    onRequestedBioIdHandled?.();
+  }, [requestedBioId, points, onRequestedBioIdHandled]);
 
   function recomputeLocalSharesForSet(nextExploredPoints: BioPoint[], nextK: number) {
     setExploredPoints([...nextExploredPoints]);
